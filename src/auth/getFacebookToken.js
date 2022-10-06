@@ -15,11 +15,13 @@ async function getFacebookToken(){
     await page.goto(url);
 
     let auth_url = await page.url();
-    console.log(auth_url);
-
-    await page.screenshot({path: 'example.png'});
+    
+    //await page.screenshot({path: 'token.png'});
   
     await browser.close();
+
+    return auth_url.split('=')[1].split('&')[0];
 }
+
 
 module.exports = { getFacebookToken }

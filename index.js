@@ -1,30 +1,39 @@
 'use strict';
 
 require('dotenv').config();
-const express = require('express');
+const app = require('express')();
+const cron = require("node-cron");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const chalk =  require('chalk'); // chalk@4.1.2 
 
-//cron
-const update = require('./cron/update');
+const GET_MATCHES_INTERVAL = "*/5 * * * *";
+var TINDER_AUTH = null;
+var MATCHES = null;
+
+//crons
+const { getMatches } = require('./cron/getMaches');
 
 //modules 
+const { getFacebookToken } = require('./src/auth/getFacebookToken');
+const { getTinderToken } = require('./src/auth/getTinderToken');
 
-const { getFacebookToken } = require('./src/getFacebookToken');
-
-const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-let PORT = process.env.PORT || 4444;
+const PORT = process.env.PORT || 6969;
 app.listen(PORT,()=>{console.log(chalk.bgWhite('listening on port: '+PORT));});
 
-
-getFacebookToken();
+var tinder_auth = null;
 
 async function init(){
-    update.initScheduledJobs();
+
+    let access_token = await getFacebookToken();
+    TINDER_AUTH = await getTinderToken(access_token);
+    await getMatches(TINDER_AUTH,MATCHES);
+    console.log("Matches:",MATCHES);
+    cron.schedule(GET_MATCHES_INTERVAL,()=>{ getMatches(TINDER_AUTH,MATCHES) });
 }
 
+init();
 
