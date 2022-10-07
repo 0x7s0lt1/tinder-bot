@@ -1,6 +1,7 @@
 "use strict";
 
 require('dotenv').config();
+const chalk = require('chalk');
 const fetch = require('node-fetch');
 
 async function getTinderToken(access_token) {
@@ -21,13 +22,13 @@ async function getTinderToken(access_token) {
                 facebook_id : process.env.FACEBOOK_UID
                 })
             });
-
-            let json = res.json();
+ 
+            let json = await res.json();
             
-            return json;
+            return json.data.api_token;
 
     }catch(err) {
-        console.error('Error in Get-Tinder-Token:',err);
+        console.error(chalk.bgRed(new Date().getTime() + 'Error in Get-Tinder-Token:',err));
         return false;
     }
     
