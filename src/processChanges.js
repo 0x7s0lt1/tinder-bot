@@ -31,15 +31,16 @@ async function processChanges(API_TOKEN,MATCHES){
        // if last message not from the Bot
        if(match.messages[match.messages.length - 1].from !== process.env.TINDER_UID){
 
-          let new_msg_string = "";
+          let msg_array = [];
           match.messages = match.messages.reverse();
-          for(let i = 0;i < match.messages.length;i++){
+          for( let i = 0; i < match.messages.length; i++ ){
             if(match.messages[i].from === process.env.TINDER_UID){
               break;
             }
-
-            new_msg_string += match.messages[i].message + " ";
+            msg_array.push(match.messages[i].message);
           }
+
+          let msg_string = msg_array.reverse().join(' ');
 
           //TODO: analyze messages and create reply 
 
