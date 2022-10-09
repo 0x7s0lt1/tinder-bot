@@ -28,7 +28,7 @@ async function getTinderToken(access_token) {
             return json.data.api_token;
 
     }catch(err) {
-        console.error(chalk.bgRed(new Date().getTime() + 'Error in Get-Tinder-Token:',err));
+        console.error(chalk.bgRed(new Date().toLocaleString() + 'Error in Get-Tinder-Token:',err));
         return false;
     }
     

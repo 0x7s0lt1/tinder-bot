@@ -20,11 +20,11 @@ async function getMatches(API_TOKEN){
         body: JSON.stringify({"last_activity_date":""}),
     });
 
-    return  await res.json().matches;
+    return  await res.json();
     
 
 }catch(err) {
-    console.error(chalk.bgRed(new Date().getTime() + 'Error in Get-Tinder-Matches:',err));
+    console.error(chalk.bgRed(new Date().toLocaleString() + 'Error in Get-Tinder-Matches:',err));
     return false;
 }
 }

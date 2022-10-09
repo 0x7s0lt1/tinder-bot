@@ -29,7 +29,7 @@ async function getFacebookToken(){
         return auth_url.split('=')[1].split('&')[0];
 
     }catch(err){
-        console.error(chalk.bgRed(new Date().getTime() + 'Error in Get-Facebook-Token',err));
+        console.error(chalk.bgRed(new Date().toLocaleString() + 'Error in Get-Facebook-Token',err));
         return false;
     }
 }
