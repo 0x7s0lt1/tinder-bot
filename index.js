@@ -14,7 +14,7 @@ let TINDER_API,MATCHES,U_MATCHES;
 
 //cron modules
 const { swipeAllRight } = require('./cron/swipeAllRight');
-const { getMatches } = require('./cron/getMaches');
+const { getMatches } = require('./cron/getMatches');
 const { processChanges } = require('./src/processChanges');
 
 //auth modules
