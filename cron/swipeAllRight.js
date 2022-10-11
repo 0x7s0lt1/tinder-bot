@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 
 async function swipeAllRight(API_TOKEN){
 
-    console.log(chalk.bgBlue(new Date().toLocaleString(),'START SCHEDULE LIKEING'));
+    console.log(chalk.bgBlack(new Date().toLocaleString()),chalk.bgBlue('START SCHEDULE LIKEING'));
 
     try{
 
@@ -41,21 +41,21 @@ async function swipeAllRight(API_TOKEN){
                 })
 
                 let _json = await _res.json();
-                if(_json.status === 200)  console.log(chalk.bgGreen(new Date().toLocaleString(),'Successfully Like on id:',r.user._id));
+                if(_json.status === 200)  console.log(chalk.bgBlack(new Date().toLocaleString()),chalk.bgGreen('Successfully Like on id:',r.user._id));
             
                }catch(er) {
-                console.error(chalk.bgRed(new Date().toLocaleString() ,'Error in Swiping right id:',r.user._id,"Error Message:",er));
+                console.error(chalk.bgBlack(new Date().toLocaleString()),chalk.bgRed('Error in Swiping right id:',r.user._id,"Error Message:",er));
                 return false;
                }
                 
             });
 
         }catch(err){
-            console.error(chalk.bgRed(new Date().toLocaleString() ,'Error in Loopint through recommendations',err));
+            console.error(chalk.bgBlack(new Date().toLocaleString()),chalk.bgRed('Error in Loopint through recommendations',err));
         }
 
     }catch(e) {
-        console.error(chalk.bgRed(new Date().toLocaleString() ,'Error in getting recommendations:',e));
+        console.error(chalk.bgBlack(new Date().toLocaleString()),chalk.bgRed('Error in getting recommendations:',e));
 
     }
    

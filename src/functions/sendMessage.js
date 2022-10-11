@@ -17,16 +17,16 @@ async function sendMessage(API_TOKEN,MESSAGE){
             'app_version': '6.9.4',
             'X-Auth-Token': API_TOKEN
         },
-        body: JSON.stringify({"message": MESSAGE.message}),
+        body: JSON.stringify({"message": MESSAGE.content}),
     });
 
     let json = await res.json();
 
-    if(json.status === 200) console.log(chalk.bgGreen(new Date().toLocaleString(),'Successfully send '+ MESSAGE.action +' message to:',MESSAGE.id));
+    if(json.status === 200) console.log(chalk.bgBlack(new Date().toLocaleString()),chalk.bgGreen('Successfully send '+ MESSAGE.action +' message to:',MESSAGE.id));
     
 
 }catch(err) {
-    console.error(chalk.bgRed(new Date().toLocaleString() + ' Error in Send-Message:',err));
+    console.error(chalk.bgBlack(new Date().toLocaleString()),chalk.bgRed(' Error in Send-Message:',err));
     return false;
 }
 }

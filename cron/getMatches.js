@@ -24,7 +24,7 @@ async function getMatches(API_TOKEN){
     
 
 }catch(err) {
-    console.error(chalk.bgRed(new Date().toLocaleString() + 'Error in Get-Tinder-Matches:',err));
+    console.error(chalk.bgBlack(new Date().toLocaleString()),chalk.bgRed('Error in Get-Tinder-Matches:',err));
     return false;
 }
 }
