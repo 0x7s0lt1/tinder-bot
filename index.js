@@ -31,7 +31,7 @@ const movie_conversations = fs.readFileSync('./src/datasets/movie_conversations.
 
 
 
-// tensoreflow object that can travel between the modules
+// tensorflow object
 let TF = {
     encoder: null,
     model : null,
