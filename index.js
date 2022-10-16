@@ -8,8 +8,8 @@ const tf = require('@tensorflow/tfjs-node');
 const use = require('@tensorflow-models/universal-sentence-encoder');
 
 // variables
-const UPDATE_INTERVAL = "*/5 * * * *";
-const LIKEING_INTERVAL = "*/7 * * * *";
+const UPDATE_INTERVAL = "* */1 * * *";
+const LIKEING_INTERVAL = "* */12 * * *";
 const NUM_SAMPLES = 200;
 let TINDER_API,MATCHES;
 
