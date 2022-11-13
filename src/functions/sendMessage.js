@@ -2,7 +2,6 @@
 
 require('dotenv').config();
 const chalk = require('chalk');
-const fetch = require('node-fetch');
 
 async function sendMessage(API_TOKEN,MESSAGE){
   try{

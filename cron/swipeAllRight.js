@@ -1,7 +1,6 @@
 "use strict";
 
 const chalk = require("chalk");
-const fetch = require("node-fetch");
 
 async function swipeAllRight(API_TOKEN){
 
