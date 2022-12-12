@@ -160,7 +160,7 @@ async function processChanges(API_TOKEN,MATCHES){
             };
             let embeddings = await TF.model.embed( input );
   
-            TF.tf.tidy( async () => {
+            tf.tidy( async () => {
   
               const embed_query = embeddings[ "queryEmbedding" ].arraySync();
               const embed_responses = embeddings[ "responseEmbedding" ].arraySync();
@@ -171,8 +171,9 @@ async function processChanges(API_TOKEN,MATCHES){
   
               let id = scores.indexOf( Math.max( ...scores ) );
               MESSAGE.action = "AI-Response";
-              MESSAGE.content = responses[ randomOffset + id ];
-  
+              MESSAGE.content = TF.data.responses[ randomOffset + id ];
+              //console.log(MESSAGE.content,TF.data.questions[ randomOffset + id ]);
+              
               await sendMessage(API_TOKEN,MESSAGE);
   
             });
